@@ -1,5 +1,5 @@
 import React from 'react';
-import Sandbar from './components/Sandbar';
+import Sandbar from './components/Sandbar/index.js';
 
 function App() {
   return (
