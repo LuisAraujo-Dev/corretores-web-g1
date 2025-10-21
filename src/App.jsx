@@ -1,26 +1,24 @@
-import './App.css'
+import React from 'react';
+import Sandbar from './components/Sandbar';
 
 function App() {
   return (
-    <div className=''>
-      <h1>sandbar</h1>
-    
+    <div className="min-h-screen font-sans">
+      <Sandbar /> 
 
-    <main>
-      {/* <Hero id="inicio" /> */}
-        {/* <AboutUs id="sobre-nos" /> */}
-        {/* <Products id="produtos" /> */}
-        {/* <Carriers id="seguradoras" /> */}
-        {/* <Contact id="contato" /> */}
+      <div id="inicio" className="pt-20 lg:pt-24"> 
+        
+        <main>
+            <div className="h-[200vh] bg-gray-100 p-8 text-center text-gray-500">
+                <h1>Corretor Digital Pro - Modelo G1</h1>
+                <p>Sandbar implementado e testando o efeito de rolagem.</p>
+                <div className="mt-80">Role para baixo para ver o Sandbar mudar de cor.</div>
+            </div>
+        </main>
+      </div>
 
-      <div className=''>
-            <h1>Corretor Digital Pro - Modelo G1</h1>
-            <p>Estrutura base pronta. Próximo: Sandbar e Seção Hero.</p>
-        </div>
-    </main>
-
-    <Footer />
     </div>
-  )
+  );
 }
-export default App
+
+export default App;
