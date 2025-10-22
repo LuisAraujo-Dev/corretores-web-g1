@@ -1,6 +1,7 @@
 import { createContext, type FC, type ReactNode, useState, useCallback, useContext } from "react";
 import type { Product, ProductSegment } from "../types/index.js";
 import { productsData } from "./productsData.js";
+import { Shield } from 'lucide-react';
 
 interface Promotion {
   produtoNome: string; 
@@ -32,7 +33,7 @@ const createInitialVisibility = (segments: ProductSegment[]): Record<string, boo
 };
 
 
-const defaultIcon = productsData[0]?.products[0]?.icon;
+const defaultIcon = productsData[0]?.products[0]?.icon || Shield;
 
 const INITIAL_DATA: AdminData = {
   activePromotion: {
@@ -48,7 +49,6 @@ const AdminDataContext = createContext<AdminDataContextType | undefined>(undefin
 export const AdminDataProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [data, setData] = useState<AdminData>(INITIAL_DATA);
 
-  // Função para atualizar a promoção
   const updatePromotion = useCallback((promo: Promotion) => {
     setData(prev => ({
       ...prev,
