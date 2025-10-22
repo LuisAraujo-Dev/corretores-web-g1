@@ -6,7 +6,7 @@ import type { SectionProps } from "../../types/index.js";
 
 const Products: FC<SectionProps> = ({ id }) => {
   const { getVisibleProducts } = useAdminData(); 
-  const visibleProductSegments = getVisibleProducts(); 
+  const visibleProductSegments = getVisibleProducts();
   
   if (visibleProductSegments.length === 0) {
       return null;

@@ -1,9 +1,10 @@
-import type { FC } from 'react';
-import { useAdminData } from '../../data/AdminDataContext.js';
+import type { FC } from "react";
+import { useAdminData } from "../../data/AdminDataContext.js";
+
 
 const AdminProducts: FC = () => {
   const { data, getProductList, toggleProductVisibility } = useAdminData();
-  const productSegments = getProductList();
+  const productSegments = getProductList(); 
 
   return (
     <div className="p-4 bg-white rounded-lg shadow">
@@ -21,7 +22,7 @@ const AdminProducts: FC = () => {
               return (
                 <div key={product.name} className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
                   <span className="font-medium text-gray-700 flex items-center space-x-2">
-                    <product.icon className="w-5 h-5 text-orange-500" />
+                    <product.icon className="w-5 h-5 text-blue-800" />
                     <span>{product.name}</span>
                   </span>
                   
