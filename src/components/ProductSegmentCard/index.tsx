@@ -1,8 +1,8 @@
 
-import { Info, Send } from 'lucide-react'; 
+import { Info, Send, ChevronLeft, ChevronRight } from 'lucide-react'; 
 import { type FC, useState, useEffect } from 'react';
-import type { Product, ProductSegment } from '../../types/index.js';
-import { CORRETORA_INFO, generateWhatsappLink } from '../../utils/whatsappLinkGenerator.js';
+import type { ProductSegment, Product } from '../../types/index.js';
+import  { CORRETORA_INFO, generateWhatsappLink } from '../../utils/whatsappLinkGenerator.js';
 
 const ROTATION_INTERVAL_MS = 10000; 
 
@@ -18,42 +18,74 @@ const ProductSegmentCard: FC<ProductSegment> = ({ title, products }) => {
   }
   
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showMore, setShowMore] = useState(false);
   
-  const currentProduct = products[currentIndex] as Product;
+  const currentProduct = products[currentIndex] as Product; 
+  
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
+    setShowMore(false);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + products.length) % products.length);
+    setShowMore(false);
+  };
 
   useEffect(() => {
+
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
+      handleNext(); 
     }, ROTATION_INTERVAL_MS);
 
     return () => clearInterval(timer);
   }, [products.length]); 
-
   
-  const mensagemContratar = `Olá, equipe ${CORRETORA_INFO.nome}, gostaria de contratar o produto ${currentProduct.name}.`;
-  const linkContratar = generateWhatsappLink(CORRETORA_INFO.telefone, mensagemContratar);
-
   const mensagemEspecialista = `Olá, equipe ${CORRETORA_INFO.nome}, gostaria de saber mais sobre o produto ${currentProduct.name}.`;
   const linkEspecialista = generateWhatsappLink(CORRETORA_INFO.telefone, mensagemEspecialista);
 
   const mensagemCotacao = `Olá, equipe ${CORRETORA_INFO.nome}, gostaria de fazer uma cotação para o produto ${currentProduct.name}.`;
   const linkCotacao = generateWhatsappLink(CORRETORA_INFO.telefone, mensagemCotacao);
 
-  const [showMore, setShowMore] = useState(false);
-  
-  const Icon = currentProduct.icon; 
+  const Icon = currentProduct.icon;
 
   return (
     <div className="bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-800 flex flex-col h-full transition duration-500">
       
       <h3 className="text-xl font-bold text-blue-800 mb-4 pb-2 border-b border-gray-100">{title}</h3>
 
-      <div className="grow min-h-[150px] transition-opacity duration-500 ease-in-out">
-        <div className="flex items-center space-x-3 mb-3">
-          <Icon className="w-8 h-8 text-orange-500" />
-          <h4 className="text-lg font-semibold text-gray-800">{currentProduct.name}</h4>
+      <div className="grow min-h-[150px] relative px-6">
+        
+        <div 
+          key={currentProduct.name}
+          className="transition-opacity duration-700 ease-in-out opacity-100 p-1"
+        >
+          <div className="flex items-center space-x-3 mb-3">
+            <Icon className="w-8 h-8 text-orange-500" />
+            <h4 className="text-lg font-semibold text-gray-800">{currentProduct.name}</h4>
+          </div>
+          <p className="text-gray-600 mb-4">{currentProduct.objective}</p>
         </div>
-        <p className="text-gray-600 mb-4">{currentProduct.objective}</p>
+
+        <div className="absolute inset-y-0 inset-x-0 flex justify-between items-center px-0"> 
+            
+            <button 
+                onClick={handlePrev}
+                className="p-2 bg-gray-200 hover:bg-gray-300 rounded-full transition-colors z-20 -ml-4 shadow-md" 
+                aria-label="Produto Anterior"
+            >
+                <ChevronLeft className="w-5 h-5 text-blue-800" />
+            </button>
+            
+            <button 
+                onClick={handleNext}
+                className="p-2 bg-gray-200 hover:bg-gray-300 rounded-full transition-colors z-20 -mr-4 shadow-md"
+                aria-label="Próximo Produto"
+            >
+                <ChevronRight className="w-5 h-5 text-blue-800" />
+            </button>
+        </div>
+        
       </div>
 
       <div className="flex flex-col space-y-3 mt-auto pt-4 border-t border-gray-100">
@@ -85,19 +117,10 @@ const ProductSegmentCard: FC<ProductSegment> = ({ title, products }) => {
         )}
 
         <a 
-          href={linkContratar}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block text-center w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 rounded-lg transition-colors"
-        >
-          Contratar
-        </a>
-
-        <a 
           href={linkCotacao}
           target="_blank"
           rel="noopener noreferrer"
-          className="block text-center w-full text-gray-700 bg-gray-200 hover:bg-gray-300 font-bold py-2 rounded-lg transition-colors"
+          className="block text-center w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 rounded-lg transition-colors"
         >
           Faça Sua Cotação
         </a>
