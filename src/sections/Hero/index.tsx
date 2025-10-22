@@ -1,8 +1,8 @@
-import { ShieldCheck } from 'lucide-react'; 
-import type { FC } from 'react';
-import type { CardDeOfertaProps, SectionProps } from '../../types/index.js';
-import { CORRETORA_INFO, generateWhatsappLink } from '../../utils/whatsappLinkGenerator.js';
-import { useAdminData } from '../../data/AdminDataContext.js';
+import type { FC } from "react";
+import { useAdminData } from "../../data/AdminDataContext.js";
+import type { CardDeOfertaProps, SectionProps } from "../../types/index.js";
+import { CORRETORA_INFO, generateWhatsappLink } from "../../utils/whatsappLinkGenerator.js";
+
 
 const CardDeOferta: FC<CardDeOfertaProps> = ({ nomeProduto, IconComponent, info, linkWhatsapp }) => {
   return (
@@ -28,6 +28,7 @@ const CardDeOferta: FC<CardDeOfertaProps> = ({ nomeProduto, IconComponent, info,
   );
 };
 
+
 const Hero: FC<SectionProps> = ({ id }) => {
   
   const { data } = useAdminData(); 
@@ -37,16 +38,18 @@ const Hero: FC<SectionProps> = ({ id }) => {
   const mensagemEquipe = `Olá, equipe ${CORRETORA_INFO.nome}. Gostaria de falar sobre os produtos e serviços que vocês oferecem.`;
   const whatsappLinkEquipe = generateWhatsappLink(CORRETORA_INFO.telefone, mensagemEquipe);
   
+  // 2. Dados DINÂMICOS para o Card de Oferta
   const nomeProdutoOferta = activePromo.produtoNome;
+  
   const mensagemOferta = `Olá, equipe ${CORRETORA_INFO.nome}. Tenho interesse na oferta especial do produto ${nomeProdutoOferta}.`;
   const whatsappLinkOferta = generateWhatsappLink(CORRETORA_INFO.telefone, mensagemOferta);
 
   const ofertaDinamica = {
     nomeProduto: nomeProdutoOferta,
-    info: activePromo.info, 
+    info: activePromo.info, // Texto dinâmico
     linkWhatsapp: whatsappLinkOferta
   };
-  
+
   return (
     <section id={id} className="relative bg-gray-900 text-white pt-32 pb-20 lg:pt-48 lg:pb-32">
       <div className="absolute inset-0 bg-black opacity-40"></div> 
@@ -77,7 +80,7 @@ const Hero: FC<SectionProps> = ({ id }) => {
           <div className="lg:w-5/12">
             <CardDeOferta 
               nomeProduto={ofertaDinamica.nomeProduto}
-              IconComponent={PromoIcon}
+              IconComponent={PromoIcon} 
               info={ofertaDinamica.info}
               linkWhatsapp={ofertaDinamica.linkWhatsapp}
             />

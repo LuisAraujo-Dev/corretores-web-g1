@@ -1,14 +1,13 @@
 import type { FC } from "react";
 import ProductSegmentCard from "../../components/ProductSegmentCard/index.js";
-import { productsData } from "../../data/productsData.js";
-import type { SectionProps } from "../../types/index.js";
 import { useAdminData } from "../../data/AdminDataContext.js";
+import type { SectionProps } from "../../types/index.js";
 
 
 const Products: FC<SectionProps> = ({ id }) => {
-  const { getVisibleProducts } = useAdminData();
-  const visibleProductSegments = getVisibleProducts();
-
+  const { getVisibleProducts } = useAdminData(); 
+  const visibleProductSegments = getVisibleProducts(); 
+  
   if (visibleProductSegments.length === 0) {
       return null;
   }
