@@ -1,8 +1,10 @@
 import type { FC } from "react";
 import Sandbar from "./components/Sandbar/index.js";
 import AboutUs from "./sections/AboutUs/index.js";
+import Carriers from "./sections/Carriers/index.js";
 import Hero from "./sections/Hero/index.js";
 import Products from "./sections/Products/index.js";
+import Contact from "./sections/Contact/index.js";
 
 
 const App: FC = () => {
@@ -14,13 +16,11 @@ const App: FC = () => {
       <main>
         <Hero id="inicio" /> 
         <AboutUs id="sobre-nos" /> 
-        
         <Products id="produtos" /> 
+        
+        <Carriers id="seguradoras" /> 
 
-        <div id="seguradoras" className="h-screen bg-gray-100 p-8 text-center text-gray-500">
-            <h2 className="text-2xl mt-40">Próxima Etapa: Seguradoras e Contato</h2>
-            <p>Seção Produtos implementada com lógica de rotação a cada 10 segundos.</p>
-        </div>
+        <Contact id="contato" /> 
       </main>
 
     </div>
