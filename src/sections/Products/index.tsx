@@ -2,9 +2,17 @@ import type { FC } from "react";
 import ProductSegmentCard from "../../components/ProductSegmentCard/index.js";
 import { productsData } from "../../data/productsData.js";
 import type { SectionProps } from "../../types/index.js";
+import { useAdminData } from "../../data/AdminDataContext.js";
 
 
 const Products: FC<SectionProps> = ({ id }) => {
+  const { getVisibleProducts } = useAdminData();
+  const visibleProductSegments = getVisibleProducts();
+
+  if (visibleProductSegments.length === 0) {
+      return null;
+  }
+
   return (
     <section id={id} className="py-20 lg:py-32 bg-white">
       <div className="container mx-auto px-4">
@@ -17,7 +25,7 @@ const Products: FC<SectionProps> = ({ id }) => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {productsData.map((segment) => (
+          {visibleProductSegments.map((segment) => (
             <ProductSegmentCard 
               key={segment.title} 
               title={segment.title}
