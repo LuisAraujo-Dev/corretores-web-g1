@@ -2,6 +2,8 @@ import type { FC } from "react";
 import Sandbar from "./components/Sandbar/index.js";
 import AboutUs from "./sections/AboutUs/index.js";
 import Hero from "./sections/Hero/index.js";
+import Products from "./sections/Products/index.js";
+
 
 const App: FC = () => {
   return (
@@ -11,12 +13,13 @@ const App: FC = () => {
 
       <main>
         <Hero id="inicio" /> 
-
         <AboutUs id="sobre-nos" /> 
+        
+        <Products id="produtos" /> 
 
-        <div id="produtos" className="h-screen bg-gray-100 p-8 text-center text-gray-500">
-            <h2 className="text-2xl mt-40">Próxima Etapa: Produtos (Rotação)</h2>
-            <p>Seção Sobre Nós implementada. Navegue pelo Sandbar.</p>
+        <div id="seguradoras" className="h-screen bg-gray-100 p-8 text-center text-gray-500">
+            <h2 className="text-2xl mt-40">Próxima Etapa: Seguradoras e Contato</h2>
+            <p>Seção Produtos implementada com lógica de rotação a cada 10 segundos.</p>
         </div>
       </main>
 

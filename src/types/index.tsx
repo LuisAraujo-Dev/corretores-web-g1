@@ -15,3 +15,14 @@ export interface CardDeOfertaProps {
 export interface SectionProps {
   id: string;
 }
+
+export interface Product {
+    name: string;
+    icon: LucideIcon;
+    objective: string;
+}
+
+export interface ProductSegment {
+    title: string;
+    products: Product[];
+}
