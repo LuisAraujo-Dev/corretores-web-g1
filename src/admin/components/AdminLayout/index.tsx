@@ -8,6 +8,7 @@ const AdminLayout: FC = () => {
   const navLinks = [
     { to: 'dashboard', icon: Users, name: 'Dashboard' },
     { to: 'products', icon: Settings, name: 'Gestão de Produtos' },
+    { to: 'carriers', icon: Settings, name: 'Gestão de Seguradoras' },
     { to: 'promotion', icon: Tag, name: 'Promoção de Destaque' },
   ];
 

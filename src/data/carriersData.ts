@@ -6,12 +6,16 @@ export interface Carrier {
 }
 
 export const carriersData: Carrier[] = [
-    { id: 1, name: "Seguradora A", logoUrl: "A" },
-    { id: 2, name: "Seguradora B", logoUrl: "B" },
-    { id: 3, name: "Seguradora C", logoUrl: "C" },
-    { id: 4, name: "Seguradora D", logoUrl: "D" },
-    { id: 5, name: "Seguradora E", logoUrl: "E" },
-    { id: 6, name: "Seguradora F", logoUrl: "F" },
-    { id: 7, name: "Seguradora G", logoUrl: "G" },
-    { id: 8, name: "Seguradora H", logoUrl: "H" },
+    { id: 1, name: "Porto Seguro", logoUrl: "PS" },
+    { id: 2, name: "Bradesco Seguros", logoUrl: "BS" },
+    { id: 3, name: "SulAmérica", logoUrl: "SA" },
+    { id: 4, name: "Allianz", logoUrl: "AZ" },
+    { id: 5, name: "Itaú Seguros", logoUrl: "IS" },
+    { id: 6, name: "Tokio Marine", logoUrl: "TM" },
+    { id: 7, name: "HDI Seguros", logoUrl: "HDI" },
+    { id: 8, name: "Mapfre", logoUrl: "MF" },
+    { id: 9, name: "Liberty Seguros", logoUrl: "LB" },
+    { id: 10, name: "Azul Seguros", logoUrl: "AS" },
+    { id: 11, name: "Caixa Seguradora", logoUrl: "CS" },
+    { id: 12, name: "MetLife", logoUrl: "ML" },
 ];

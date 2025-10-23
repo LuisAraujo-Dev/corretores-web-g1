@@ -11,6 +11,7 @@ import AdminProducts from './admin/pages/AdminProducts.js';
 import AdminPromotion from './admin/pages/AdminPromotion.js';
 import { AdminDataProvider } from './data/AdminDataContext.js';
 import App from './App.js';
+import AdminCarriers from './admin/pages/AdminCarriers.js';
 
 const Router: FC = () => {
   return (
@@ -29,6 +30,7 @@ const Router: FC = () => {
             >
               <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="products" element={<AdminProducts />} />
+              <Route path="carriers" element={<AdminCarriers />} />
               <Route path="promotion" element={<AdminPromotion />} />
             </Route>
 

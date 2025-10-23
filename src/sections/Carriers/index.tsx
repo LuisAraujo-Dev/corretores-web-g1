@@ -1,9 +1,16 @@
 import type { FC } from "react";
-import { carriersData } from "../../data/carriersData.js";
+import { useAdminData } from "../../data/AdminDataContext.js";
 import type { SectionProps } from "../../types/index.js";
 
 
 const Carriers: FC<SectionProps> = ({ id }) => {
+  const { getVisibleCarriers } = useAdminData();
+  const visibleCarriers = getVisibleCarriers(); 
+
+  if (visibleCarriers.length === 0) {
+      return null; 
+  }
+
   return (
     <section id={id} className="py-20 lg:py-24 bg-white">
       <div className="container mx-auto px-4">
@@ -16,7 +23,7 @@ const Carriers: FC<SectionProps> = ({ id }) => {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
-          {carriersData.map((carrier) => (
+          {visibleCarriers.map((carrier) => (
             <div 
               key={carrier.id} 
               className="w-full h-20 flex items-center justify-center bg-gray-50 p-3 rounded-lg opacity-70 hover:opacity-100 transition duration-300 grayscale hover:grayscale-0"
