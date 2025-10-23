@@ -1,8 +1,7 @@
 import type { FC } from "react";
 import { useAdminData } from "../../data/AdminDataContext.js";
 import type { SectionProps } from "../../types/index.js";
-
- 
+import CarriersBackground from '../../images/carriers.jpg';
 
 const Carriers: FC<SectionProps> = ({ id }) => {
   const { getVisibleCarriers } = useAdminData();
@@ -13,29 +12,45 @@ const Carriers: FC<SectionProps> = ({ id }) => {
   }
 
   return (
-    <section id={id} className="py-20 lg:py-24 bg-white">
-      <div className="container mx-auto px-4">
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
-          {visibleCarriers.map((carrier) => (
-            <div 
-              key={carrier.id} 
-              className="w-full h-20 flex items-center justify-center bg-gray-50 p-3 rounded-lg opacity-70 hover:opacity-100 transition duration-300 grayscale hover:grayscale-0"
-            >
-              {carrier.logoImg !== "PLACEHOLDER" ? (
-                  <img 
-                    src={carrier.logoImg} 
-                    alt={carrier.name} 
-                    className="max-h-full max-w-full object-contain" 
-                  />
-              ) : (
-                  <span className="text-xl font-bold text-gray-500">{carrier.logoUrl}</span>
-              )}
-            </div>
-          ))}
-        </div>
+    <section id={id} className="relative py-20 lg:py-24 bg-gray-900 text-white overflow-hidden">
         
-      </div>
+        <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${CarriersBackground})` }}
+        >
+            <div className="absolute inset-0 bg-blue-900 opacity-80"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10 text-center">
+            
+            <div className="mb-12">
+                <h2 className="text-3xl lg:text-4xl font-extrabold text-white">
+                    Nossas Seguradoras Parceiras
+                </h2>
+                <p className="text-gray-300 mt-2">Trabalhamos com as líderes do mercado para sua tranquilidade.</p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {visibleCarriers.map((carrier) => (
+                <div 
+                    key={carrier.id} 
+                    className="w-full h-16 flex items-center justify-center p-2 
+                               transition duration-300 hover:scale-105"
+                >
+                    {carrier.logoImg !== "PLACEHOLDER" ? (
+                        <img 
+                            src={carrier.logoImg} 
+                            alt={carrier.name} 
+                            className="max-h-full max-w-full object-contain filter brightness-200 opacity-90" 
+                        />
+                    ) : (
+                        <span className="text-2xl font-bold text-white opacity-90">{carrier.logoUrl}</span>
+                    )}
+                </div>
+            ))}
+            </div>
+            
+        </div>
     </section>
   );
 };
