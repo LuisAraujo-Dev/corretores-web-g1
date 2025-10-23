@@ -53,7 +53,7 @@ const Sandbar: FC = () => {
       <nav className="container mx-auto px-4 flex justify-between items-center">
         <a href="#inicio" className="text-xl font-bold tracking-wider z-50">
           <span className={`${isScrolled ? 'text-blue-800' : 'text-white lg:text-blue-800'}`}>CORRETORA</span>
-          <span className={`${isScrolled ? 'text-orange-500' : 'text-white lg:text-orange-500'}`}>.pro</span>
+          <span className={`${isScrolled ? 'text-orange-500' : 'text-white lg:text-orange-500'}`}>.logo</span>
         </a>
         <div className="hidden lg:flex space-x-6">
           {navItems.map((item) => (
@@ -63,12 +63,7 @@ const Sandbar: FC = () => {
           ))}
         </div>
 
-        <a 
-          href="#contato"
-          className="hidden lg:block bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-5 rounded-md transition-colors"
-        >
-          Solicitar Cotação
-        </a>
+        
 
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
