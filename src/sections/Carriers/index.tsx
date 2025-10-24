@@ -1,7 +1,9 @@
 import type { FC } from "react";
 import { useAdminData } from "../../data/AdminDataContext.js";
 import type { SectionProps } from "../../types/index.js";
-import CarriersBackground from '../../images/carriers.jpg';
+import CarriersBackground from '../../images/carriers.jpg'
+
+ 
 
 const Carriers: FC<SectionProps> = ({ id }) => {
   const { getVisibleCarriers } = useAdminData();
@@ -34,14 +36,14 @@ const Carriers: FC<SectionProps> = ({ id }) => {
             {visibleCarriers.map((carrier) => (
                 <div 
                     key={carrier.id} 
-                    className="w-full h-16 flex items-center justify-center p-2 
+                    className="w-full h-28 flex items-center justify-center p-2 
                                transition duration-300 hover:scale-105"
                 >
                     {carrier.logoImg !== "PLACEHOLDER" ? (
                         <img 
                             src={carrier.logoImg} 
                             alt={carrier.name} 
-                            className="max-h-full max-w-full object-contain filter brightness-200 opacity-90" 
+                            className="h-full w-auto object-contain filter brightness-200 opacity-90" 
                         />
                     ) : (
                         <span className="text-2xl font-bold text-white opacity-90">{carrier.logoUrl}</span>
