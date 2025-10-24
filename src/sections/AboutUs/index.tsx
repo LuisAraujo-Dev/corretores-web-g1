@@ -1,6 +1,7 @@
 import { Target, Eye, Handshake } from 'lucide-react'; 
 import type { FC } from 'react';
 import type { SectionProps } from '../../types/index.js';
+import TeamPhoto from "../../images/equipe.webp"
 
 const mvvData = [
   {
@@ -31,8 +32,12 @@ const AboutUs: FC<SectionProps> = ({ id }) => {
         <div className="flex flex-col lg:flex-row items-center gap-12 mb-20">
           
           <div className="lg:w-1/2">
-            <div className="h-64 lg:h-96 bg-gray-300 rounded-lg shadow-xl flex items-center justify-center">
-              <span className="text-xl text-gray-600">Foto do Escritório/Equipe (Placeholder)</span>
+            <div className="h-64 lg:h-96 rounded-lg shadow-xl overflow-hidden">
+                <img 
+                    src={TeamPhoto} 
+                    alt="Foto da Equipe ou Escritório da Corretora"
+                    className="w-full h-full object-cover" 
+                />
             </div>
           </div>
           
