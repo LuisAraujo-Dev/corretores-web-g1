@@ -2,10 +2,13 @@ import type { FC } from "react";
 import { useAdminData } from "../../data/AdminDataContext.js";
 import type { CardDeOfertaProps, SectionProps } from "../../types/index.js";
 import { CORRETORA_INFO, generateWhatsappLink } from "../../utils/whatsappLinkGenerator.js";
+import HeroBackground from "../../images/insurance.webp"
 
 
 const CardDeOferta: FC<CardDeOfertaProps> = ({ nomeProduto, IconComponent, info, linkWhatsapp }) => {
   return (
+
+    
     <div className="bg-white shadow-xl rounded-lg p-6 max-w-sm mx-auto transform hover:scale-[1.02] transition duration-300">
       <div className="flex items-center space-x-4 mb-4">
         {IconComponent && (
@@ -52,7 +55,12 @@ const Hero: FC<SectionProps> = ({ id }) => {
 
   return (
     <section id={id} className="relative bg-gray-900 text-white pt-32 pb-20 lg:pt-48 lg:pb-32">
-      <div className="absolute inset-0 bg-black opacity-40"></div> 
+      <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${HeroBackground})` }}
+      >
+          <div className="absolute inset-0 bg-blue-900 opacity-60"></div>
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center">
