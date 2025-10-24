@@ -47,6 +47,7 @@ const ProductSegmentCard: FC<ProductSegment> = ({ title, products }) => {
   const mensagemCotacao = `Olá, equipe ${CORRETORA_INFO.nome}, gostaria de fazer uma cotação para o produto ${currentProduct.name}.`;
   const linkCotacao = generateWhatsappLink(CORRETORA_INFO.telefone, mensagemCotacao);
 
+  const ContentKey = currentProduct.name + currentIndex;
   const Icon = currentProduct.icon;
 
   return (
@@ -56,16 +57,16 @@ const ProductSegmentCard: FC<ProductSegment> = ({ title, products }) => {
 
       <div className="grow min-h-[150px] relative px-6">
 
-        <div
-          key={currentProduct.name}
-          className="transition-opacity duration-700 ease-in-out opacity-100 p-1"
-        >
+        <div 
+              key={currentProduct.name}
+              className="product-slide-transition" 
+            >
           <div className="flex items-center space-x-3 mb-3">
-            <Icon className="w-8 h-8 text-orange-500" />
-            <h4 className="text-lg font-semibold text-gray-800">{currentProduct.name}</h4>
-          </div>
-          <p className="text-gray-600 mb-4">{currentProduct.objective}</p>
-        </div>
+                <Icon className="w-8 h-8 text-orange-500" />
+                <h4 className="text-lg font-semibold text-gray-800">{currentProduct.name}</h4>
+              </div>
+              <p className="text-gray-600 mb-4">{currentProduct.objective}</p>
+            </div>
 
         <div className="absolute inset-y-0 inset-x-0 flex justify-between items-center px-0">
 
